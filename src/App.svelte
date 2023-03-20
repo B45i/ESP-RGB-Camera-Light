@@ -2,7 +2,30 @@
     let red = 0;
     let green = 0;
     let blue = 0;
-    let brightnes = 50;
+    let brightens = 50;
+
+    async function updateData(data) {
+        return fetch('rest/update', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+    }
+
+    async function handleSave() {
+        try {
+            updateData({
+                red,
+                green,
+                blue,
+                brightnes: brightens,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     $: rgb = `rgb(${red}, ${green}, ${blue})`;
 </script>
@@ -50,19 +73,21 @@
     </div>
 
     <div class="color-range-picker">
-        <label for="range-brightnes">Brightnes</label>
+        <label for="range-brightnes">Brightens</label>
         <input
             type="range"
             name="range-brightnes"
             id="range-brightnes"
-            bind:value={brightnes}
+            bind:value={brightens}
             min="0"
             max="100"
             step="1"
         />
     </div>
 
-    <button class="btn" style="background-color: {rgb}">Save</button>
+    <button on:click={handleSave} class="btn" style="background-color: {rgb}"
+        >Save</button
+    >
 </main>
 
 <style>
