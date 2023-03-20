@@ -89,6 +89,11 @@
         >Save</button
     >
 </main>
+<footer>
+    <a href="http://www.B45i.me" target="_blank" rel="noopener noreferrer"
+        >B45i</a
+    > &copy; 2023
+</footer>
 
 <style>
     .main {
@@ -131,5 +136,13 @@
 
     #range-brightnes {
         accent-color: gold;
+    }
+
+    footer {
+        padding: 1rem;
+        text-align: center;
+    }
+    footer > a {
+        color: #fff;
     }
 </style>
